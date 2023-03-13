@@ -144,9 +144,10 @@ runs:
         fi
 
         input_sync=${{inputs.sync}}
-        if [ "${{github.event_name}}" == "workflow_dispatch" ]; then
+        if [ "${{github.event_name}}" == "workflow_dispatch"] && [ ! -z ${{github.event.inputs.sync}} ]  ; then
           input_sync=${{github.event.inputs.sync}}
         fi
+
 
         echo "Validate inputs"
 
